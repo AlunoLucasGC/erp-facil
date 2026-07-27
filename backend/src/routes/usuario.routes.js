@@ -1,13 +1,16 @@
-const express = require("express") //* Importa as bibliotecas do express
+//Importa as bibliotecas do express
+const express = require("express") 
 
-const router = express.Router(); //* Separa as rotas em arquivos diferentes
+//Cria um roteador
+const router = express.Router();
 
-//Listar usuários
-router.get("/",(req,res) => {
-    res.json({
-         mensagem: "Lista de usuários"
-    })
-   
-});
+//Importa o controller
+const usuarioController = require ("../controllers/usuario.controller");
 
+//Quando acessar GET /usuarios
+//Execute listarUsuarios()
+router.get("/", usuarioController.listarUsuarios)
+
+//Permite que outro arquivo utilize esse router
+//Disponibiliza para outros arquivos
 module.exports = router;

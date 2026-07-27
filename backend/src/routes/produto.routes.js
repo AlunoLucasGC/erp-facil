@@ -1,13 +1,16 @@
-const express = require("express");//*Importa a biblioteca express
+//Importa a biblioteca express
+const express = require("express");
 
+//Cria um roteador
 const router = express.Router();
 
-//Listar produtos 
-router.get("/",(req, res )=>
-{
-    res.json({
-        mensagem: "Lista de Produtos"
-    })
-})
+//Importa o Controller
+const produtoController = require("../controllers/produto.controller");
 
+//Quando acessar GET /produtos,
+//Execute listarProdutos()
+router.get("/",produtoController.listarProdutos);
+
+//Permite que outro arquivo utilize esse router
+//Disponibiliza para outros arquivos
 module.exports = router;
