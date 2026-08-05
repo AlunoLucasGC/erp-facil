@@ -17,9 +17,10 @@ function listarUsuarios(req,res){
     //Envia o vetor para o navegador em formato JSON
     res.json(usuarios)
 
-    //Exporta a função
+    
+}
+
+//Exporta a função
     module.exports = {
         listarUsuarios
     };
-
-}

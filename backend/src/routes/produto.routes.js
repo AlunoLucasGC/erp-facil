@@ -11,6 +11,9 @@ const produtoController = require("../controllers/produto.controller");
 //Execute listarProdutos()
 router.get("/",produtoController.listarProdutos);
 
+//Busca o produto por Id
+router.get("/:id", produtoController.buscarProduto);
+
 //Permite que outro arquivo utilize esse router
 //Disponibiliza para outros arquivos
 module.exports = router;
