@@ -11,6 +11,9 @@ const clienteController = require("../controllers/cliente.controller");
 //Execute listarClientes()
 router.get("/",clienteController.listarClientes);
 
+//Busca um cliente pelo ID 
+router.get("/:id",clienteController.buscarCliente);
+
 //Permite que outro arquivo utilize esse router
 //Disponibiliza para outros arquivos
 module.exports = router;
