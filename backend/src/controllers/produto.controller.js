@@ -17,8 +17,9 @@ function listarProdutos(req,res){
     //Envia o vetor para o navegador em formato JSON
     res.json(produtos);
 
-    //Exporta a função 
+}
+
+ //Exporta a função 
     module.exports={
         listarProdutos
     };
-}
