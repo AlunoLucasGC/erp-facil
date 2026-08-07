@@ -11,6 +11,9 @@ const produtoController = require("../controllers/produto.controller");
 //Execute listarProdutos()
 router.get("/",produtoController.listarProdutos);
 
+//Busca produtos com estoque baixo
+router.get("/estoque-baixo", produtoController.listarEstoqueBaixo);
+
 //Busca o produto por Id
 router.get("/:id", produtoController.buscarProduto);
 

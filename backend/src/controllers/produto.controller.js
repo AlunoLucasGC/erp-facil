@@ -1,27 +1,12 @@
 //req - Tudo o que o navegador enviou
 //res - Resposta que é enviada ao navegador
-function listarProdutos(req,res){
 
-    //Variável que guarda um vetor
-    const produtos = [
-        {
-            id: 1,
-            nome: "Arroz"
-        },
-        {
-            id: 2,
-            nome: "Feijão"
-        }
-    ];
+//*====================================
+//*DADOS TEMPORÁRIOS
+//*====================================
 
-    //Envia o vetor para o navegador em formato JSON
-    res.json(produtos);
-
-}
-
-function buscarProduto(req,res){
-
-    const produtos = [
+//Variável que guarda um vetor
+const produtos = [
         {
             id: 1,
             nome: "Arroz",
@@ -34,15 +19,34 @@ function buscarProduto(req,res){
             estoque: 5,
             preco: 25.00
         },
-
         {
             id: 3,
             nome: "Picanha",
             estoque: 10,
             preco: 70.00
         }
-        
     ];
+
+//*==================================
+//*LISTAR PRODUTOS
+//*==================================
+
+//req - Tudo o que o navegador enviou
+//res - resposta enviada ao navegador
+function listarProdutos(req,res){
+
+    //Envia o vetor para o navegador em formato JSON
+   return res.json(produtos);
+
+}
+
+//*==================================
+//*BUSCAR PRODUTOS
+//*==================================
+
+//req - Tudo o que o navegador enviou 
+//res - resposta enviada ao navegador
+function buscarProduto(req,res){
 
     //Pega o Id e transforma em Number
     const id = Number(req.params.id);
@@ -66,8 +70,32 @@ function buscarProduto(req,res){
     return res.json(produtoEncontrado);
 }
 
+//*==================================
+//*LISTA PRODUTOS EM ESTOQUE BAIXO
+//*==================================
+
+//req - Tudo o que o navegador enviou
+//res- Resposta enviada ao navegador
+function listarEstoqueBaixo(req,res){
+
+    //filter() procura produtos com estoque menor ou igual a 5 e
+    // retorna um array
+    const EstoqueBaixo = produtos.filter((produto) => {
+          return produto.estoque <= 5
+});
+    //Envia o vetor para o navegador em formato Json
+   return res.json(EstoqueBaixo);
+
+}
+
+
+//*======================
+//*EXPORTA A FUNÇÃO
+//*======================
+
  //Exporta a função 
     module.exports={
         listarProdutos,
-        buscarProduto
+        buscarProduto,
+        listarEstoqueBaixo
     };
